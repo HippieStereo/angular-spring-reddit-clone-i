@@ -11,6 +11,9 @@ remote-profile/
 # root info
 /INFO.txt
 
+# temp images
+IMAGES/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
