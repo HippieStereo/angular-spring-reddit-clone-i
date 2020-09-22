@@ -3,9 +3,13 @@
 
 # Log file
 *.log
+remote-profile/
 
 # BlueJ files
 *.ctxt
+
+# root info
+/INFO.txt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -17,7 +21,14 @@
 *.ear
 *.zip
 *.tar.gz
+*.gz
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Mac files
+**/.DS_Store
+
+# Eclispe
+.metadata
