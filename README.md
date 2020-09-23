@@ -2,11 +2,11 @@
 
 **Version 1.0.0**
 
-TODO List Web App - Spring Framework and Angular
+REDIT Clone - Spring Framework and Angular
 
-## Tutorial in Udemy
+## Tutorial in Youtube
 
-https://www.udemy.com/course/full-stack-application-development-with-spring-boot-and-angular/
+https://www.youtube.com/watch?v=DKlTBBuc32c
 
 ---
 
