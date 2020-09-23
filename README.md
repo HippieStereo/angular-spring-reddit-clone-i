@@ -2,7 +2,7 @@
 
 **Version 1.0.0**
 
-REDIT Clone - Spring Framework and Angular
+REDDIT Clone - Spring Framework and Angular
 
 ## Tutorial in Youtube
 
