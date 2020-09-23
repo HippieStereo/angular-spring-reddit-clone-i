@@ -13,6 +13,7 @@ remote-profile/
 
 # temp images
 IMAGES/
+.mvn/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -35,3 +36,15 @@ hs_err_pid*
 
 # Eclispe
 .metadata
+
+# Build
+target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
