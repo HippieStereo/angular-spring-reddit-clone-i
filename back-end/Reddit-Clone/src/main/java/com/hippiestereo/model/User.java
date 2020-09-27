@@ -29,4 +29,38 @@ public class User {
 	
 	private Instant created;
 	private boolean enabled;
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Instant getCreated() {
+		return created;
+	}
+	public void setCreated(Instant created) {
+		this.created = created;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public Long getUserId() {
+		return userId;
+	}
 }
