@@ -46,10 +46,6 @@ public class Post {
 		return postId;
 	}
 
-	/*public void setPostId(Long postId) {
-		this.postId = postId;
-	}*/
-
 	public String getPostName() {
 		return postName;
 	}
