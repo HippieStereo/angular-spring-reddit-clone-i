@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "spring-reddit-clone-token")
+@Table(name = "token")
 public class VerificationToken {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
