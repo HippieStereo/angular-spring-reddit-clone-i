@@ -20,7 +20,7 @@ public class User {
 	@NotBlank(message = "Username is required")
 	private String username;
 	
-	@NotBlank(message = "password is required")
+	@NotBlank(message = "Password is required")
 	private String password;
 	
 	@Email
