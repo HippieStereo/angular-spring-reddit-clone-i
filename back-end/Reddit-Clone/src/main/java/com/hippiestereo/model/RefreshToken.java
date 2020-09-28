@@ -14,6 +14,7 @@ public class RefreshToken {
 	private Long id;
 	private String token;
 	private Instant createdDate;
+	
 	public String getToken() {
 		return token;
 	}
