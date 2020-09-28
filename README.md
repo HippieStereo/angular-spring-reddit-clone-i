@@ -4,9 +4,11 @@
 
 REDDIT Clone - Spring Framework and Angular
 
-## Tutorial in Youtube
+## Tutorial source
 
 https://www.youtube.com/watch?v=DKlTBBuc32c
+https://www.youtube.com/playlist?list=PLSVW22jAG8pAGrwFjsUERCu9WSo2-uEMg
+https://programmingtechie.com/2019/09/30/build-a-full-stack-reddit-clone-with-spring-boot-and-angular-part-1/
 
 ---
 
