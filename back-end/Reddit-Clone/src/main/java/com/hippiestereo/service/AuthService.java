@@ -19,13 +19,16 @@ public class AuthService {
 	private final PasswordEncoder passwordEncoder;
 	private final VerificationTokenRepository verificationTokenRepository;
 	private final UserRepository userRepository;
+	private final MailService mailService;
 	
 	public AuthService(PasswordEncoder passwordEncoder, 
 			UserRepository userRepository, 
-			VerificationTokenRepository verificationTokenRepository) {
+			VerificationTokenRepository verificationTokenRepository,
+			MailService mailService) {
 		this.passwordEncoder = passwordEncoder;
 		this.userRepository = userRepository;
 		this.verificationTokenRepository = verificationTokenRepository;
+		this.mailService = mailService;
 	}
 	
 	@Transactional
