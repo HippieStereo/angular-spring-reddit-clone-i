@@ -1,10 +1,20 @@
 package com.hippiestereo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class NotificationEmail {
 	private String subject;
 	private String recipient;
 	private String body;
 	
+	/*public NotificationEmail(String subject, String recipient, String body) {
+		this.subject = subject;
+		this.recipient = recipient;
+		this.body = body;
+	}
 	public String getSubject() {
 		return subject;
 	}
@@ -22,5 +32,5 @@ public class NotificationEmail {
 	}
 	public void setBody(String body) {
 		this.body = body;
-	}
+	}*/
 }
