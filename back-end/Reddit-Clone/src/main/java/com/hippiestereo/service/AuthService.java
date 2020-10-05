@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class AuthService {
 	
 	private final PasswordEncoder passwordEncoder;

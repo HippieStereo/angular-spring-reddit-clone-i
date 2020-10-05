@@ -14,6 +14,15 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.lang.Nullable;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Post {
 	@Id
@@ -41,64 +50,4 @@ public class Post {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Subreddit subreddit;
-
-	public Long getPostId() {
-		return postId;
-	}
-
-	public String getPostName() {
-		return postName;
-	}
-
-	public void setPostName(String postName) {
-		this.postName = postName;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getVoteCount() {
-		return voteCount;
-	}
-
-	public void setVoteCount(Integer voteCount) {
-		this.voteCount = voteCount;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Instant getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Instant createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Subreddit getSubreddit() {
-		return subreddit;
-	}
-
-	public void setSubreddit(Subreddit subreddit) {
-		this.subreddit = subreddit;
-	}
 }
