@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hippiestereo.dto.AuthenticationResponse;
 import com.hippiestereo.dto.LoginRequest;
 import com.hippiestereo.dto.RegisterRequest;
 import com.hippiestereo.service.AuthService;
@@ -36,7 +37,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
-	public void login(LoginRequest loginRequest){
-		//AuthService.login(loginRequest);
+	public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
+		return authService.login(loginRequest);
 	}
 }

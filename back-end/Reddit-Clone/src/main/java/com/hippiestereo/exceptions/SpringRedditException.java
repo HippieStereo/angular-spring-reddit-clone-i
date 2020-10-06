@@ -1,4 +1,4 @@
-package com.hippiestereo.execptions;
+package com.hippiestereo.exceptions;
 
 public class SpringRedditException extends RuntimeException{
 	private static final long serialVersionUID = 1538960756566929135L;

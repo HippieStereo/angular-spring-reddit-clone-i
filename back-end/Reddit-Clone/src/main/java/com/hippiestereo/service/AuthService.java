@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,15 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hippiestereo.dto.AuthenticationResponse;
 import com.hippiestereo.dto.LoginRequest;
 import com.hippiestereo.dto.RegisterRequest;
-import com.hippiestereo.execptions.SpringRedditException;
+import com.hippiestereo.exceptions.SpringRedditException;
 import com.hippiestereo.model.NotificationEmail;
 import com.hippiestereo.model.User;
 import com.hippiestereo.model.VerificationToken;
 import com.hippiestereo.repository.UserRepository;
 import com.hippiestereo.repository.VerificationTokenRepository;
+import com.hippiestereo.security.JwtProvider;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
@@ -33,8 +34,8 @@ public class AuthService {
 	private final VerificationTokenRepository verificationTokenRepository;
 	private final UserRepository userRepository;
 	private final MailService mailService;
-	//private final AuthenticationManager authenticationManager;
-	//private final JwtProvider jwtProvider;
+	private final AuthenticationManager authenticationManager;
+	private final JwtProvider jwtProvider;
 	//private final RefreshTokenService refreshTokenService;
 	
 	@Transactional
@@ -85,8 +86,16 @@ public class AuthService {
 		userRepository.save(user);
 	}
 
-	/*public AuthenticationResponse login(LoginRequest loginRequest) {
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-				principal, credentials, authorities));
-	}*/
+	public AuthenticationResponse login(LoginRequest loginRequest) {
+		
+		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+				loginRequest.getUsername(), loginRequest.getPassword()));
+		
+		SecurityContextHolder.getContext().setAuthentication(authenticate);
+		
+		String token = jwtProvider.generateToken(authenticate);
+		
+		return new AuthenticationResponse(token, loginRequest.getUsername());
+		
+	}
 }

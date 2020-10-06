@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import com.hippiestereo.execptions.SpringRedditException;
+import com.hippiestereo.exceptions.SpringRedditException;
 import com.hippiestereo.model.NotificationEmail;
 
 import lombok.AllArgsConstructor;

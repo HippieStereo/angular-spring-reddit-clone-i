@@ -2,7 +2,7 @@ package com.hippiestereo.model;
 
 import java.util.Arrays;
 
-import com.hippiestereo.execptions.SpringRedditException;
+import com.hippiestereo.exceptions.SpringRedditException;
 
 public enum VoteType {
 	UPVOTE(1),
