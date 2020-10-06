@@ -32,7 +32,7 @@ public class AuthService {
 	private final VerificationTokenRepository verificationTokenRepository;
 	private final UserRepository userRepository;
 	private final MailService mailService;
-	private final AuthenticationManager authenticationManager;
+	//private final AuthenticationManager authenticationManager;
 	//private final JwtProvider jwtProvider;
 	//private final RefreshTokenService refreshTokenService;
 	
@@ -84,8 +84,8 @@ public class AuthService {
 		userRepository.save(user);
 	}
 
-	public AuthenticationResponse login(LoginRequest loginRequest) {
+	/*public AuthenticationResponse login(LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				principal, credentials, authorities));
-	}
+	}*/
 }
