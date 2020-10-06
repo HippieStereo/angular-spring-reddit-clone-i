@@ -22,6 +22,7 @@ import com.hippiestereo.repository.UserRepository;
 import com.hippiestereo.repository.VerificationTokenRepository;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
