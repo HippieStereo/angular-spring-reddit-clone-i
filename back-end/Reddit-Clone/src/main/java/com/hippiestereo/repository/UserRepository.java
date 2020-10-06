@@ -9,5 +9,5 @@ import com.hippiestereo.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
-	Optional<User> findByusername(String username);
+	Optional<User> findByUsername(String username);
 }

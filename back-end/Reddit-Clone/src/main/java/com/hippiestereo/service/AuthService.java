@@ -1,13 +1,20 @@
 package com.hippiestereo.service;
 
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hippiestereo.dto.AuthenticationResponse;
+import com.hippiestereo.dto.LoginRequest;
 import com.hippiestereo.dto.RegisterRequest;
+import com.hippiestereo.execptions.SpringRedditException;
 import com.hippiestereo.model.NotificationEmail;
 import com.hippiestereo.model.User;
 import com.hippiestereo.model.VerificationToken;
@@ -25,7 +32,7 @@ public class AuthService {
 	private final VerificationTokenRepository verificationTokenRepository;
 	private final UserRepository userRepository;
 	private final MailService mailService;
-	//private final AuthenticationManager authenticationManager;
+	private final AuthenticationManager authenticationManager;
 	//private final JwtProvider jwtProvider;
 	//private final RefreshTokenService refreshTokenService;
 	
@@ -59,5 +66,26 @@ public class AuthService {
 		verificationTokenRepository.save(verificationToken);
 		
 		return token;
+	}
+
+	public void verifyAccount(String token) {
+		Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
+		
+		fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringRedditException("Invalid Token !!!")));
+	}
+
+	private void fetchUserAndEnable(VerificationToken verificationToken) {
+		String username = verificationToken.getUser().getUsername();
+		
+		User user = userRepository.findByUsername(username).orElseThrow(
+				() -> new SpringRedditException("User not found with name - " + username));
+		user.setEnabled(true);
+		
+		userRepository.save(user);
+	}
+
+	public AuthenticationResponse login(LoginRequest loginRequest) {
+		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+				principal, credentials, authorities));
 	}
 }
