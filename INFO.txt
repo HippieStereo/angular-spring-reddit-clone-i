@@ -1,1 +1,15 @@
 INFO
+
+Keystore
+
+https://www.youtube.com/watch?v=NXJtwP4JTCI
+
+keytool -genkey -alias spring-reddit-clone -keyalg RSA -keystore spring-reddit-clone.jks -keysize 2048
+
+Enter keystore password:
+qwerty
+
+Other :
+spring
+
+keytool -importkeystore -srckeystore spring-reddit-clone.jks -destkeystore spring-reddit-clone.jks -deststoretype pkcs12
