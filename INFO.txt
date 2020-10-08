@@ -3,6 +3,7 @@ INFO
 Keystore
 
 https://www.youtube.com/watch?v=NXJtwP4JTCI
+https://www.youtube.com/watch?v=AQDCe585Lnc
 
 keytool -genkey -alias spring-reddit-clone -keyalg RSA -keystore spring-reddit-clone.jks -keysize 2048
 
