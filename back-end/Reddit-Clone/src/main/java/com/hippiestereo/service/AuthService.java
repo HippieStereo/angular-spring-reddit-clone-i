@@ -40,6 +40,7 @@ public class AuthService {
 	
 	@Transactional
 	public void signup(RegisterRequest registerRequest) {
+		
 		User user = new User();
 		
 		user.setEmail(registerRequest.getEmail());
@@ -98,4 +99,5 @@ public class AuthService {
 		return new AuthenticationResponse(token, loginRequest.getUsername());
 		
 	}
+	
 }
