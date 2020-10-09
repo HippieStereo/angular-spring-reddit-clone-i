@@ -38,8 +38,8 @@ public class JwtProvider {
     public void init() {
         try {
             keyStore = KeyStore.getInstance("JKS");
-            InputStream resourceAsStream = getClass().getResourceAsStream("/reddit-clone.jks");
-            keyStore.load(resourceAsStream, "secret".toCharArray());
+            InputStream resourceAsStream = getClass().getResourceAsStream("/spring-reddit-clone.jks");
+            keyStore.load(resourceAsStream, "qwerty".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             throw new SpringRedditException("Exception occurred while loading keystore", e);
         }
@@ -67,7 +67,7 @@ public class JwtProvider {
 
     private PrivateKey getPrivateKey() {
         try {
-            return (PrivateKey) keyStore.getKey("springblog", "secret".toCharArray());
+            return (PrivateKey) keyStore.getKey("spring-reddit-clone", "qwerty".toCharArray());
         } catch (KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException e) {
             throw new SpringRedditException("Exception occured while retrieving public key from keystore", e);
         }
