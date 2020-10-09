@@ -80,7 +80,7 @@ public class JwtProvider {
 
     private PublicKey getPublickey() {
         try {
-            return keyStore.getCertificate("springblog").getPublicKey();
+            return keyStore.getCertificate("spring-reddit-clone").getPublicKey();
         } catch (KeyStoreException e) {
             throw new SpringRedditException("Exception occured while " +
                     "retrieving public key from keystore", e);
