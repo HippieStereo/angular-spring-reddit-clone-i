@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hippiestereo.dto.PostRequest;
-import com.hippiestereo.dto.PostResponse;
+import com.hippiestereo.dto.PostRequestDTO;
+import com.hippiestereo.dto.PostResponseDTO;
 import com.hippiestereo.model.Post;
 import com.hippiestereo.model.Subreddit;
 import com.hippiestereo.model.User;
@@ -36,7 +36,7 @@ public class PostService {
 	private PostMapper postMapper;
 	
 	@Transactional
-	public void save (PostRequest postRequest){
+	public void save (PostRequestDTO postRequest){
 		
 		Subreddit subreddit = subredditRepository.findByName(postRequest.getSubredditName())
 				.orElseThrow(() -> new SubredditNotFoundException(postRequest.getSubredditName()));
@@ -47,7 +47,7 @@ public class PostService {
 	}
 	
 	@Transactional(readOnly = true)
-	public PostResponse getPost(Long id) {
+	public PostResponseDTO getPost(Long id) {
 		
 		Post post = postRepository.findById(id)
 				.orElseThrow(() -> new PostNotFoundException(id.toString()));
@@ -57,7 +57,7 @@ public class PostService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<PostResponse> getAllPosts(){
+	public List<PostResponseDTO> getAllPosts(){
 		
 		return postRepository.findAll()
 				.stream()
@@ -67,7 +67,7 @@ public class PostService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<PostResponse> getPostsBySubreddit(Long suredditId){
+	public List<PostResponseDTO> getPostsBySubreddit(Long suredditId){
 		
 		Subreddit subreddit = subredditRepository.findById(suredditId)
 				.orElseThrow(() -> new SubredditNotFoundException(suredditId.toString()));
@@ -79,7 +79,7 @@ public class PostService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<PostResponse> getPostsByUsername(String username){
+	public List<PostResponseDTO> getPostsByUsername(String username){
 		
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException(username));

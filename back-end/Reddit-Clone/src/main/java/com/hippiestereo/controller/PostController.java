@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hippiestereo.dto.PostRequest;
-import com.hippiestereo.dto.PostResponse;
+import com.hippiestereo.dto.PostRequestDTO;
+import com.hippiestereo.dto.PostResponseDTO;
 import com.hippiestereo.service.PostService;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class PostController {
 	private final PostService postService;
 	
 	@PostMapping
-	public ResponseEntity<Void> createPost(@RequestBody PostRequest postRequest) {
+	public ResponseEntity<Void> createPost(@RequestBody PostRequestDTO postRequest) {
 		
 		postService.save(postRequest);
 		
@@ -36,28 +36,28 @@ public class PostController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<PostResponse>> getAllPosts(){
+	public ResponseEntity<List<PostResponseDTO>> getAllPosts(){
 		
 		return status(HttpStatus.OK).body(postService.getAllPosts());
 		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<PostResponse> getPost(@PathVariable Long id) {
+	public ResponseEntity<PostResponseDTO> getPost(@PathVariable Long id) {
 		
 		return status(HttpStatus.OK).body(postService.getPost(id));
 		
 	}
 	
 	@GetMapping("/by-subreddit/{id}")
-	public ResponseEntity<List<PostResponse>> getPostsBySubreddit(@PathVariable Long id) {
+	public ResponseEntity<List<PostResponseDTO>> getPostsBySubreddit(@PathVariable Long id) {
 		
 		return status(HttpStatus.OK).body(postService.getPostsBySubreddit(id));
 		
 	}	
 	
 	@GetMapping("/by-user/{name}")
-	public ResponseEntity<List<PostResponse>> getPostsByUserName(@PathVariable String username) {
+	public ResponseEntity<List<PostResponseDTO>> getPostsByUserName(@PathVariable String username) {
 		
 		return status(HttpStatus.OK).body(postService.getPostsByUsername(username));
 		

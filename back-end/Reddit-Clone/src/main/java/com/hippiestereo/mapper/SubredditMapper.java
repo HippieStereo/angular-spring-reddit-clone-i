@@ -6,7 +6,7 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.hippiestereo.dto.SubredditDto;
+import com.hippiestereo.dto.SubredditDTO;
 import com.hippiestereo.model.Post;
 import com.hippiestereo.model.Subreddit;
 
@@ -14,7 +14,7 @@ import com.hippiestereo.model.Subreddit;
 public interface SubredditMapper {
 
 	@Mapping(target = "numberOfPosts", expression = "java(mapPosts(subreddit.getPosts()))")
-	SubredditDto mapSubredditToDto(Subreddit subreddit);
+	SubredditDTO mapSubredditToDto(Subreddit subreddit);
 	
 	default Integer mapPosts(List<Post> numberOfPosts) {
 		
@@ -24,6 +24,6 @@ public interface SubredditMapper {
 	
 	@InheritInverseConfiguration
 	@Mapping(target = "posts", ignore = true)
-	Subreddit mapDtoToSubreddit(SubredditDto subredditDto);
+	Subreddit mapDtoToSubreddit(SubredditDTO subredditDto);
 	
 }

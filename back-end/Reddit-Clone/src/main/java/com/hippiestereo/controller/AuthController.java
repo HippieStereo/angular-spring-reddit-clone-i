@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hippiestereo.dto.AuthenticationResponse;
-import com.hippiestereo.dto.LoginRequest;
-import com.hippiestereo.dto.RegisterRequest;
+import com.hippiestereo.dto.AuthenticationResponseDTO;
+import com.hippiestereo.dto.LoginRequestDTO;
+import com.hippiestereo.dto.RegisterRequestDTO;
 import com.hippiestereo.service.AuthService;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class AuthController {
 	private final AuthService authService;
 	
 	@PostMapping("/signup")
-	public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) {
+	public ResponseEntity<String> signup(@RequestBody RegisterRequestDTO registerRequest) {
 		authService.signup(registerRequest);
 		
 		return new ResponseEntity<String>("User Registration Successful", HttpStatus.OK);
@@ -37,7 +37,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
-	public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
+	public AuthenticationResponseDTO login(@RequestBody LoginRequestDTO loginRequest){
 		return authService.login(loginRequest);
 	}
 }

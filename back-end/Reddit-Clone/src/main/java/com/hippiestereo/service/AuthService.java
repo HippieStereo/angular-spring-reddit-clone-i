@@ -13,9 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hippiestereo.dto.AuthenticationResponse;
-import com.hippiestereo.dto.LoginRequest;
-import com.hippiestereo.dto.RegisterRequest;
+import com.hippiestereo.dto.AuthenticationResponseDTO;
+import com.hippiestereo.dto.LoginRequestDTO;
+import com.hippiestereo.dto.RegisterRequestDTO;
 import com.hippiestereo.exceptions.SpringRedditException;
 import com.hippiestereo.exceptions.UsernameNotFoundException;
 import com.hippiestereo.model.NotificationEmail;
@@ -41,7 +41,7 @@ public class AuthService {
 	//private final RefreshTokenService refreshTokenService;
 	
 	@Transactional
-	public void signup(RegisterRequest registerRequest) {
+	public void signup(RegisterRequestDTO registerRequest) {
 		
 		User user = new User();
 		
@@ -101,7 +101,7 @@ public class AuthService {
 		userRepository.save(user);
 	}
 
-	public AuthenticationResponse login(LoginRequest loginRequest) {
+	public AuthenticationResponseDTO login(LoginRequestDTO loginRequest) {
 		
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				loginRequest.getUsername(), loginRequest.getPassword()));
@@ -110,7 +110,7 @@ public class AuthService {
 		
 		String token = jwtProvider.generateToken(authenticate);
 		
-		return new AuthenticationResponse(token, loginRequest.getUsername());
+		return new AuthenticationResponseDTO(token, loginRequest.getUsername());
 		
 	}
 	

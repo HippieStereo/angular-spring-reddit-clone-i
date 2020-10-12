@@ -1,8 +1,8 @@
 package com.hippiestereo.mapper;
 
 import com.github.marlonlom.utilities.timeago.TimeAgo;
-import com.hippiestereo.dto.PostRequest;
-import com.hippiestereo.dto.PostResponse;
+import com.hippiestereo.dto.PostRequestDTO;
+import com.hippiestereo.dto.PostResponseDTO;
 import com.hippiestereo.model.*;
 import com.hippiestereo.repository.CommentRepository;
 import com.hippiestereo.repository.VoteRepository;
@@ -32,7 +32,7 @@ public abstract class PostMapper {
     @Mapping(target = "subreddit", source = "subreddit")
     @Mapping(target = "voteCount", constant = "0")
     @Mapping(target = "user", source = "user")
-    public abstract Post mapDtoToPost(PostRequest postRequest, Subreddit subreddit, User user);
+    public abstract Post mapDtoToPost(PostRequestDTO postRequest, Subreddit subreddit, User user);
 
     @Mapping(target = "id", source = "postId")
     @Mapping(target = "subredditName", source = "subreddit.name")
@@ -41,7 +41,7 @@ public abstract class PostMapper {
     @Mapping(target = "duration", expression = "java(getDuration(post))")
     @Mapping(target = "upVote", expression = "java(isPostUpVoted(post))")
     @Mapping(target = "downVote", expression = "java(isPostDownVoted(post))")
-    public abstract PostResponse mapPostToDto(Post post);
+    public abstract PostResponseDTO mapPostToDto(Post post);
 
     Integer commentCount(Post post) {
         return commentRepository.findByPost(post).size();

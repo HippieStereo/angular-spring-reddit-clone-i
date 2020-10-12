@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hippiestereo.dto.SubredditDto;
+import com.hippiestereo.dto.SubredditDTO;
 import com.hippiestereo.service.SubredditService;
 
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class SubredditController {
 	private final SubredditService subredditService;
 	
 	@PostMapping
-	public ResponseEntity<SubredditDto> createSubreddit(@RequestBody SubredditDto subredditDto) {
+	public ResponseEntity<SubredditDTO> createSubreddit(@RequestBody SubredditDTO subredditDto) {
 		
 		return ResponseEntity.status(HttpStatus.CREATED)
 		.body(subredditService.save(subredditDto));
@@ -34,7 +34,7 @@ public class SubredditController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<SubredditDto>> getAllSubreddits() {
+	public ResponseEntity<List<SubredditDTO>> getAllSubreddits() {
 		
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(subredditService.getAll());
@@ -42,7 +42,7 @@ public class SubredditController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<SubredditDto> getSubreddit(@PathVariable Long id){
+	public ResponseEntity<SubredditDTO> getSubreddit(@PathVariable Long id){
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)

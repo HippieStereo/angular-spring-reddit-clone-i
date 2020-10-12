@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hippiestereo.dto.SubredditDto;
+import com.hippiestereo.dto.SubredditDTO;
 import com.hippiestereo.exceptions.SpringRedditException;
 import com.hippiestereo.mapper.SubredditMapper;
 import com.hippiestereo.model.Subreddit;
@@ -25,7 +25,7 @@ public class SubredditService {
 	private final SubredditMapper subredditMapper;
 	
 	@Transactional
-	public SubredditDto save(SubredditDto subredditDto) {
+	public SubredditDTO save(SubredditDTO subredditDto) {
 		
 		Subreddit save = subredditRepository.save(subredditMapper.mapDtoToSubreddit(subredditDto));
 		
@@ -36,7 +36,7 @@ public class SubredditService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<SubredditDto> getAll() {
+	public List<SubredditDTO> getAll() {
 
 		return subredditRepository.findAll()
 				.stream()
@@ -45,7 +45,7 @@ public class SubredditService {
 		
 	}
 
-    public SubredditDto getSubreddit(Long id) {
+    public SubredditDTO getSubreddit(Long id) {
     	
         Subreddit subreddit = subredditRepository.findById(id)
                 .orElseThrow(() -> new SpringRedditException("No subreddit found with ID - " + id));
