@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ import com.hippiestereo.dto.AuthenticationResponse;
 import com.hippiestereo.dto.LoginRequest;
 import com.hippiestereo.dto.RegisterRequest;
 import com.hippiestereo.exceptions.SpringRedditException;
+import com.hippiestereo.exceptions.UsernameNotFoundException;
 import com.hippiestereo.model.NotificationEmail;
 import com.hippiestereo.model.User;
 import com.hippiestereo.model.VerificationToken;
@@ -58,6 +60,18 @@ public class AuthService {
                 "please click on the below url to activate your account : " +
                 "http://localhost:8080/api/auth/accountVerification/" + token));
 	}
+	
+    @Transactional(readOnly = true)
+    public User getCurrentUser() {
+    	
+        org.springframework.security.core.userdetails.User principal
+        		= (org.springframework.security.core.userdetails.User) SecurityContextHolder
+        		.getContext().getAuthentication().getPrincipal();
+        
+        return userRepository.findByUsername(principal.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("User name not found - " + principal.getUsername()));
+        
+    }
 
 	private String generateVerificationToken(User user) {
 		String token = UUID.randomUUID().toString();
@@ -99,5 +113,13 @@ public class AuthService {
 		return new AuthenticationResponse(token, loginRequest.getUsername());
 		
 	}
+	
+    public boolean isLoggedIn() {
+    	
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        
+        return !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
+        
+    }
 	
 }
