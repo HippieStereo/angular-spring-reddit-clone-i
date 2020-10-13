@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hippiestereo.dto.AuthenticationResponseDTO;
 import com.hippiestereo.dto.LoginRequestDTO;
+import com.hippiestereo.dto.RefreshTokenRequestDTO;
 import com.hippiestereo.dto.RegisterRequestDTO;
 import com.hippiestereo.service.AuthService;
+import com.hippiestereo.service.RefreshTokenService;
+
+import javax.validation.Valid;
 
 import lombok.AllArgsConstructor;
 
@@ -20,7 +24,9 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/auth")
 @AllArgsConstructor
 public class AuthController {
+	
 	private final AuthService authService;
+	private final RefreshTokenService refreshTokenService;
 	
 	@PostMapping("/signup")
 	public ResponseEntity<String> signup(@RequestBody RegisterRequestDTO registerRequest) {
@@ -40,4 +46,21 @@ public class AuthController {
 	public AuthenticationResponseDTO login(@RequestBody LoginRequestDTO loginRequest){
 		return authService.login(loginRequest);
 	}
+	
+	@PostMapping("/refresh/token")
+	public AuthenticationResponseDTO refreshTokens(@Valid @RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
+		
+		return authService.refreshToken(refreshTokenRequestDTO);
+		
+	}
+	
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequestDTO refreshTokenRequest) {
+    	
+        refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
+        
+        return ResponseEntity.status(HttpStatus.OK).body("Refresh Token Deleted Successfully!!");
+        
+    }
+	
 }

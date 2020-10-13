@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class AuthenticationResponseDTO {
     private String authenticationToken;
     private String username;
-    //private String refreshToken;
-    //private Instant expiresAt;
+    private String refreshToken;
+    private Instant expiresAt;
 }
