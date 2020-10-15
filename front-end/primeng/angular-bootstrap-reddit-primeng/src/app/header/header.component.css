@@ -1,10 +1,28 @@
-.drt{
-  background-color: aqua;
-  width: 50%;
-  align-content: stretch;
+.container{
+  height: 70px;
 }
 
-.esq{
-  background-color: blueviolet;
-  width: 50%;
+.right{
+  background-color: aqua;
+  text-align: right;
+}
+
+.left{
+  background-color: sandybrown;
+}
+
+.logo{
+  text-decoration: none;
+}
+
+.reddit-icon-svg{
+  height: 50px;
+  padding: 8px 8px 8px 0;
+  width: 50px;
+}
+
+.reddit-text{        
+  font-weight: 700;
+  height: 50px;
+  width: 50px;    
 }
