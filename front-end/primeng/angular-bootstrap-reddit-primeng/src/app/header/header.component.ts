@@ -8,9 +8,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    isLoggedIn: boolean;
-    username: string;
-    
   ngOnInit(): void {
   }
 
