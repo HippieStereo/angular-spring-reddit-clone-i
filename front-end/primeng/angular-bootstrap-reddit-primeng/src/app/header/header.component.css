@@ -2,13 +2,39 @@
   height: 70px;
 }
 
-.right{
-  background-color: aqua;
-  text-align: right;
+.left-container{
+  background-color: sandybrown;
 }
 
-.left{
-  background-color: sandybrown;
+.left-content{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/*.p-d-inline-flex{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}*/
+
+.right-container{
+  background-color: aqua;
+  position: relative;
+}
+
+.right-content{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .logo{

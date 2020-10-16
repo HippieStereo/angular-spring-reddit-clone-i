@@ -1,21 +1,46 @@
 <div class="p-grid container">
-  <div class="p-col-12 p-sm-6 left">
-    <a class="logo" routerLink="/">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="reddit-icon-svg">
-          <g>
-              <circle fill="#FF4500" cx="10" cy="10" r="10"></circle>
-              <path fill="#FFF"
-                  d="M16.67,10A1.46,1.46,0,0,0,14.2,9a7.12,7.12,0,0,0-3.85-1.23L11,4.65,13.14,5.1a1,1,0,1,0,.13-0.61L10.82,4a0.31,0.31,0,0,0-.37.24L9.71,7.71a7.14,7.14,0,0,0-3.9,1.23A1.46,1.46,0,1,0,4.2,11.33a2.87,2.87,0,0,0,0,.44c0,2.24,2.61,4.06,5.83,4.06s5.83-1.82,5.83-4.06a2.87,2.87,0,0,0,0-.44A1.46,1.46,0,0,0,16.67,10Zm-10,1a1,1,0,1,1,1,1A1,1,0,0,1,6.67,11Zm5.81,2.75a3.84,3.84,0,0,1-2.47.77,3.84,3.84,0,0,1-2.47-.77,0.27,0.27,0,0,1,.38-0.38A3.27,3.27,0,0,0,10,14a3.28,3.28,0,0,0,2.09-.61A0.27,0.27,0,1,1,12.48,13.79Zm-0.18-1.71a1,1,0,1,1,1-1A1,1,0,0,1,12.29,12.08Z">
-              </path>
-          </g>
-      </svg>
-      <span class="reddit-text">
-          Spring Reddit Clone
-      </span>
-    </a>
+  <div class="p-col-12 p-sm-6 left-container">
+      <div class="left-content">
+        <a class="logo" routerLink="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="reddit-icon-svg">
+                <g>
+                    <circle fill="#FF4500" cx="10" cy="10" r="10"></circle>
+                    <path fill="#FFF"
+                        d="M16.67,10A1.46,1.46,0,0,0,14.2,9a7.12,7.12,0,0,0-3.85-1.23L11,4.65,13.14,5.1a1,1,0,1,0,.13-0.61L10.82,4a0.31,0.31,0,0,0-.37.24L9.71,7.71a7.14,7.14,0,0,0-3.9,1.23A1.46,1.46,0,1,0,4.2,11.33a2.87,2.87,0,0,0,0,.44c0,2.24,2.61,4.06,5.83,4.06s5.83-1.82,5.83-4.06a2.87,2.87,0,0,0,0-.44A1.46,1.46,0,0,0,16.67,10Zm-10,1a1,1,0,1,1,1,1A1,1,0,0,1,6.67,11Zm5.81,2.75a3.84,3.84,0,0,1-2.47.77,3.84,3.84,0,0,1-2.47-.77,0.27,0.27,0,0,1,.38-0.38A3.27,3.27,0,0,0,10,14a3.28,3.28,0,0,0,2.09-.61A0.27,0.27,0,1,1,12.48,13.79Zm-0.18-1.71a1,1,0,1,1,1-1A1,1,0,0,1,12.29,12.08Z">
+                    </path>
+                </g>
+            </svg>
+            <span class="reddit-text">
+                Spring Reddit Clone
+            </span>
+          </a>
+      </div>
   </div>
-  <div class="p-col-12 p-sm-6 right">
-    <button pButton type="button" label="Click" style="height: 20px"></button>
+  <div class="p-col-12 p-sm-6 right-container">
+    <div class="p-grid right-content">
+        <div class="p-col">
+            <div class="box">
+                <div class="p-d-inline-flex">Inline Flex Container</div>
+            </div>
+        </div>
+        <div class="p-col">
+            <div class="box">
+                <button pButton type="button" label="Click 1" style="height: 30px"></button>
+            </div>
+        </div>
+        <div class="p-col">
+            <div class="box">
+                <button pButton type="button" label="Click 2" style="height: 30px"></button>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 <br>
+<div class="p-mb-2" style="background-color: blueviolet;">Margin bottom with level 2</div>
+<div class="p-mt-4" style="background-color: blueviolet;">Margin top with level 4</div>
+<div class="p-m-2" style="background-color: blueviolet;">Margin for all sides with level 2</div>
+<div class="p-mx-auto" style="background-color: blueviolet;">Auto margins for left and right side</div>
+<div class="p-pb-4" style="background-color: blueviolet;">Padding bottom with level 4</div>
+<div class="p-p-1" style="background-color: blueviolet;">Padding for all sides with level 1</div>
+<div class="p-m-1 p-p-1 p-m-lg-3 p-b-lg-3" style="background-color: blueviolet;">Level 3 spacing for lg screens and level 1 for smaller screens (xs).</div>
