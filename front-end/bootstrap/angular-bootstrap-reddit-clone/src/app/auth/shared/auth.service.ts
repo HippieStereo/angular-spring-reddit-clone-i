@@ -15,6 +15,11 @@ export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
 
+  refreshTokenPayload = {
+    refreshToken: this.getRefreshToken(),
+    username: this.getUserName()
+  }
+
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
 
   signup(signupRequestPayload : SignupRequestPayload): Observable<any> {
@@ -41,4 +46,34 @@ export class AuthService {
 
   }
 
+  getJwtToken(){
+
+    return this.localStorage.retrieve('authenticationToken');
+
+  }
+
+  refreshToken() {
+    return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',
+      this.refreshTokenPayload)
+      .pipe(tap(response => {
+        this.localStorage.clear('authenticationToken');
+        this.localStorage.clear('expiresAt');
+
+        this.localStorage.store('authenticationToken',
+          response.authenticationToken);
+        this.localStorage.store('expiresAt', response.expiresAt);
+      }));
+  }
+
+  getUserName() {
+    return this.localStorage.retrieve('username');
+  }
+  getRefreshToken() {
+    return this.localStorage.retrieve('refreshToken');
+  }
+
+  isLoggedIn(): boolean {
+    return this.getJwtToken() != null;
+  }
+  
 }

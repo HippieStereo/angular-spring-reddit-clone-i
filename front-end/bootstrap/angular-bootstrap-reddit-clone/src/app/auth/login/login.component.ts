@@ -54,11 +54,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.loginRequestPayload).subscribe(data => {
       this.isError = false;
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/home');
       this.toastr.success('Login Successful');
     }, error => {
-      this.toastr.success('Error Login : Check Credencials !!!');
       this.isError = true;
+      this.toastr.error('Error Login : Check Credencials !!!');
       throwError(error);
     });
   }
