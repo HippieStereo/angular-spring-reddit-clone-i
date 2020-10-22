@@ -24,6 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
         const jwtToken = this.authService.getJwtToken();
 
         if (jwtToken) {
+
             return next.handle(this.addToken(req, jwtToken)).pipe(catchError(error => {
                 if (error instanceof HttpErrorResponse
                     && error.status === 403) {
@@ -32,14 +33,18 @@ export class TokenInterceptor implements HttpInterceptor {
                     return throwError(error);
                 }
             }));
+
         }
+
         return next.handle(req);
 
     }
 
     private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler)
         : Observable<HttpEvent<any>> {
+
         if (!this.isTokenRefreshing) {
+
             this.isTokenRefreshing = true;
             this.refreshTokenSubject.next(null);
 
@@ -51,8 +56,10 @@ export class TokenInterceptor implements HttpInterceptor {
                     return next.handle(this.addToken(req,
                         refreshTokenResponse.authenticationToken));
                 })
-            )
+            );
+
         } else {
+
             return this.refreshTokenSubject.pipe(
                 filter(result => result !== null),
                 take(1),
@@ -61,14 +68,17 @@ export class TokenInterceptor implements HttpInterceptor {
                         this.authService.getJwtToken()))
                 })
             );
+            
         }
     }
 
     addToken(req: HttpRequest<any>, jwtToken: any) {
+
         return req.clone({
             headers: req.headers.set('Authorization',
                 'Bearer ' + jwtToken)
         });
+
     }
 
 }
