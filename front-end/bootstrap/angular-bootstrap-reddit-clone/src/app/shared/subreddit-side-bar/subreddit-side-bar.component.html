@@ -2,7 +2,10 @@
     <div style="color: black; font-weight: bold">Browse Subreddits</div>
     <hr />
     <span *ngFor="let subreddit of subreddits">
-        <span style="font-weight: bold" class="subreddit-text"><a href="/view-subreddit/{{subreddit.id}}">{{subreddit.name}}</a></span>
+        <span style="font-weight: bold" class="subreddit-text">
+            <!--<a href="/view-subreddit/{{subreddit.id}}">{{subreddit.name}}</a>-->
+            <a routerLink="/view-subreddit/{{subreddit.id}}">{{subreddit.name}}</a>
+        </span>
         <hr />
     </span>
     <div style="text-align: center" *ngIf="displayViewAll">

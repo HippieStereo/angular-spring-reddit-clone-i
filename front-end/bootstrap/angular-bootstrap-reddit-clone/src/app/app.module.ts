@@ -55,7 +55,11 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     EditorModule,
     NgbModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
